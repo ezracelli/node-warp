@@ -1,0 +1,33 @@
+{
+  "name": "warp",
+  "version": "0.1.0",
+  "author": "Ezra Celli <ezra@ezracelli.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build:main": "rm -rf dist/cjs && tsc --build src/tsconfig.cjs.json",
+    "build:module": "rm -rf dist/module && tsc --build src/tsconfig.json",
+    "start": "node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node tests/index.test.ts"
+  },
+  "engines": {
+    "node": ">=15"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/module/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./filters": {
+      "import": "./dist/module/filters/index.js",
+      "require": "./dist/cjs/filters/index.js"
+    }
+  },
+  "devDependencies": {
+    "@k-foss/ts-esnode": "^2.0.2",
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.21.0",
+    "typescript": "^4.2.3"
+  }
+}
